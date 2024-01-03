@@ -1,0 +1,9 @@
+/venv
+/.idea
+/results
+/data
+/debug
+/raw_ek6
+/raw_ve8
+/raw_caer
+/__pycache__
