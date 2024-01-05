@@ -121,11 +121,7 @@ class TANet(nn.Module):
 
 
         pdb.set_trace()
-
-
-
-
-
+        a_v = torch.randn(batch, seq_len, -1)
 
         #     output = torch.squeeze(output, dim=2)
         #     output = torch.flatten(output, start_dim=2)
