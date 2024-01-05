@@ -19,13 +19,14 @@ from tensorboardX import SummaryWriter
 
 import warnings
 warnings.filterwarnings(action='ignore')
-
+import torch
 
 def main():
     opt = parse_opts()
     opt.device_ids = list(range(device_count()))
     local2global_path(opt)
     model, parameters = generate_model(opt)
+    # model = torch.compile(model)
 
     criterion = get_loss(opt)
     criterion = criterion.cuda()

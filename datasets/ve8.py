@@ -120,8 +120,8 @@ class VE8Dataset(data.Dataset):
         frame_indices = data_item['frame_indices']
         snippets_frame_idx = self.temporal_transform(frame_indices)
 
+        timeseries_length = 4096
         if self.need_audio:
-            timeseries_length = 4096
             audio_path = data_item['audio']
             try:
                 feature = preprocess_audio(audio_path).T
@@ -129,10 +129,8 @@ class VE8Dataset(data.Dataset):
                 feature = np.tile(feature, reps=(k, 1))
                 audios = feature[:timeseries_length, :]
                 audios = torch.FloatTensor(audios)
-                # print(audios.shape)
-                # print(audios)
             except:
-                audios = torch.FloatTensor(torch.zeros(4096,32))
+                audios = torch.FloatTensor(torch.zeros(timeseries_length,32))
         else:
             audios = []
 
